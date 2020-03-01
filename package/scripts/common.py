@@ -16,7 +16,6 @@ import ast
 import os
 
 import ConfigParser
-import xmltodict
 from resource_management.core.resources.system import Execute
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -27,10 +26,8 @@ PRESTO_TAR_URL = config.get('download', 'presto_tar_url')
 PRESTO_TAR_NAME = PRESTO_TAR_URL.split('/')[-1]
 PRESTO_CLI_URL = config.get('download', 'presto_cli_url')
 
-with open('../../metainfo.xml', 'r') as f:
-    metaInfoXmlContent = f.read()
-
-serviceName = xmltodict.parse(metaInfoXmlContent)['metainfo']['services']['service']['name']
+packageDir = os.path.dirname(script_dir)
+serviceName = os.path.dirname(packageDir)
 prestoHome = '/usr/hdp/current/' + serviceName
 etcDir = prestoHome + '/etc'
 catalogDir = etcDir + '/catalog'
