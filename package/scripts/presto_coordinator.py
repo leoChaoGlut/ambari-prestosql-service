@@ -78,7 +78,7 @@ class Coordinator(Script):
 
         create_connectors(connectors_to_add)
         delete_connectors(connectors_to_delete)
-        create_connectors(node_properties, "{'tpch': ['connector.name=tpch']}")
+        create_connectors("{'tpch': ['connector.name=tpch']}")
 
 
 if __name__ == '__main__':
