@@ -27,7 +27,7 @@ class Worker(Script):
         Execute('mkdir -p {0}'.format(catalogDir))
         tmpPrestoTarballPath = '/tmp/' + PRESTO_TAR_NAME
         Execute('wget --no-check-certificate {0} -O {1}'.format(PRESTO_TAR_URL, tmpPrestoTarballPath))
-        Execute('tar -xf {0} -C {1}'.format(tmpPrestoTarballPath, prestoHome))
+        Execute('tar -xf {0} -C {1} --strip-components=1'.format(tmpPrestoTarballPath, prestoHome))
 
         self.configure(env)
 
