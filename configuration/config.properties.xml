@@ -40,20 +40,15 @@
 
     <property require-input="true">
         <name>discovery.uri</name>
-        <value>http://${ip}:${port}</value>
+        <value></value>
         <description>
-            The URI to the Discovery server. Because we have enabled the embedded
-            version of Discovery in the Presto coordinator, this should be the URI of
-            the Presto coordinator. For example: http://master.net:8285 but make sure
-            to replace master.net with the actual hostname of your coordinator node.
-            Ensure the port in the URI matches the port set in the http-server.http.port
-            property. This URI must not end in a slash.
+            For example: http://${ip}:${port}
         </description>
     </property>
 
     <property>
         <name>spill-enabled</name>
-        <value>false</value>
+        <value>true</value>
         <description>
 
         </description>
@@ -69,7 +64,7 @@
                     <label>false</label>
                 </entry>
             </entries>
-            <!--            <selection-cardinality>1</selection-cardinality>-->
+            <selection-cardinality>1</selection-cardinality>
         </value-attributes>
     </property>
 

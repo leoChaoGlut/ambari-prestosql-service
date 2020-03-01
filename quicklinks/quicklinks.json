@@ -1,0 +1,23 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol": {
+      "type": "HTTP_ONLY"
+    },
+    "links": [
+      {
+        "name": "Coordinator UI",
+        "label": "Coordinator UI",
+        "component_name": "PRESTO_ETL",
+        "requires_user_name": "false",
+        "url": "%@://%@:%@",
+        "port": {
+          "http_property": "http-server.http.port",
+          "regex": "^(\\d+)$",
+          "site": "config.properties"
+        }
+      }
+    ]
+  }
+}

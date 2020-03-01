@@ -27,8 +27,8 @@
             <version>330</version>
             <components>
                 <component>
-                    <name>PRESTO_COORDINATOR</name>
-                    <displayName>Presto coordinator</displayName>
+                    <name>PRESTO_COORDINATOR_ETL</name>
+                    <displayName>Presto coordinator ETL</displayName>
                     <category>MASTER</category>
                     <cardinality>1</cardinality>
                     <versionAdvertised>true</versionAdvertised>
@@ -40,8 +40,8 @@
                 </component>
 
                 <component>
-                    <name>PRESTO_WORKER</name>
-                    <displayName>Presto worker</displayName>
+                    <name>PRESTO_WORKER_ETL</name>
+                    <displayName>Presto worker ETL</displayName>
                     <category>SLAVE</category>
                     <cardinality>0+</cardinality>
                     <versionAdvertised>true</versionAdvertised>

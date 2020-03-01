@@ -41,11 +41,15 @@ class Coordinator(Script):
 
         from params import config_properties, host_info
 
-        if 'presto_worker_hosts' in host_info.keys():
-            all_hosts = host_info['presto_worker_hosts'] + \
-                        host_info['presto_coordinator_hosts']
+        coordinator_hosts = 'presto_coordinator_etl_hosts'
+        worker_hosts = 'presto_worker_etl_hosts'
+
+        if worker_hosts in host_info.keys():
+            all_hosts = host_info[worker_hosts] + \
+                        host_info[coordinator_hosts]
         else:
-            all_hosts = host_info['presto_coordinator_hosts']
+            all_hosts = host_info[coordinator_hosts]
+
         smoketest_presto(PrestoClient('localhost', 'root', config_properties['http-server.http.port']), all_hosts)
 
     def status(self, env):
