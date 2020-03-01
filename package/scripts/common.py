@@ -33,9 +33,6 @@ etcDir = prestoHome + '/etc'
 catalogDir = etcDir + '/catalog'
 launcherPath = prestoHome + '/bin/launcher'
 
-# also create prestoHome and etcDir
-Execute('mkdir -p {0}'.format(catalogDir))
-
 
 def create_connectors(connectors_to_add):
     if not connectors_to_add:
@@ -55,17 +52,3 @@ def delete_connectors(connectors_to_delete):
     for connector in connectors_list:
         connector_file_name = os.path.join(catalogDir, connector + '.properties')
         Execute('rm -f {0}'.format(connector_file_name))
-
-
-def start():
-    Execute('{0} start'.format(launcherPath))
-
-
-def stop():
-    Execute('{0} stop'.format(launcherPath))
-
-
-def install():
-    tmpPrestoTarballPath = '/tmp/' + PRESTO_TAR_NAME
-    Execute('wget --no-check-certificate {0} -O {1}'.format(PRESTO_TAR_URL, tmpPrestoTarballPath))
-    Execute('tar -xf {0} -C {1}'.format(tmpPrestoTarballPath, prestoHome))

@@ -16,7 +16,7 @@ import os.path as path
 import uuid
 
 from common import create_connectors, delete_connectors, launcherPath, \
-    start, stop, etcDir, install
+    etcDir, catalogDir, PRESTO_TAR_NAME, prestoHome, PRESTO_TAR_URL
 from resource_management.core.exceptions import ExecutionFailed, ComponentIsNotRunning
 from resource_management.core.resources.system import Execute
 from resource_management.libraries.script.script import Script
@@ -24,15 +24,19 @@ from resource_management.libraries.script.script import Script
 
 class Worker(Script):
     def install(self, env):
-        install()
+        Execute('mkdir -p {0}'.format(catalogDir))
+        tmpPrestoTarballPath = '/tmp/' + PRESTO_TAR_NAME
+        Execute('wget --no-check-certificate {0} -O {1}'.format(PRESTO_TAR_URL, tmpPrestoTarballPath))
+        Execute('tar -xf {0} -C {1}'.format(tmpPrestoTarballPath, prestoHome))
+
         self.configure(env)
 
     def stop(self, env):
-        stop()
+        Execute('{0} stop'.format(launcherPath))
 
     def start(self, env):
         self.configure(self)
-        start()
+        Execute('{0} start'.format(launcherPath))
 
     def status(self, env):
         try:
