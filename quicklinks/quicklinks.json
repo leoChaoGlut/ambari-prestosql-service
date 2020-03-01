@@ -11,7 +11,7 @@
         "label": "Coordinator UI",
         "component_name": "PRESTO_ETL",
         "requires_user_name": "false",
-        "url": "%@://hdp04:%@",
+        "url": "%@://%@:%@",
         "port": {
           "http_property": "http-server.http.port",
           "regex": "^(\\d+)$",

@@ -18,8 +18,8 @@
     <schemaVersion>2.0</schemaVersion>
     <services>
         <service>
-            <name>PRESTO_ADHOC</name>
-            <displayName>Presto_Adhoc</displayName>
+            <name>PRESTO_ETL</name>
+            <displayName>Presto_ETL</displayName>
             <comment>Presto is an open source distributed SQL query engine for running
                 interactive analytic queries against data sources of all sizes ranging
                 from gigabytes to petabytes.
@@ -33,8 +33,8 @@
             </quickLinksConfigurations>
             <components>
                 <component>
-                    <name>PRESTO_COORDINATOR_ADHOC</name>
-                    <displayName>Presto coordinator AdHoc</displayName>
+                    <name>PRESTO_COORDINATOR_ETL</name>
+                    <displayName>Presto coordinator ETL</displayName>
                     <category>MASTER</category>
                     <cardinality>1</cardinality>
                     <versionAdvertised>true</versionAdvertised>
@@ -46,8 +46,8 @@
                 </component>
 
                 <component>
-                    <name>PRESTO_WORKER_ADHOC</name>
-                    <displayName>Presto worker Adhoc</displayName>
+                    <name>PRESTO_WORKER_ETL</name>
+                    <displayName>Presto worker ETL</displayName>
                     <category>SLAVE</category>
                     <cardinality>0+</cardinality>
                     <versionAdvertised>true</versionAdvertised>
@@ -58,7 +58,7 @@
                 </component>
 
                 <component>
-                    <name>PRESTO_CLI_ADHOC</name>
+                    <name>PRESTO_CLI_ETL</name>
                     <displayName>Presto command line interface</displayName>
                     <category>CLIENT</category>
                     <cardinality>1+</cardinality>
@@ -71,10 +71,10 @@
             </components>
 
             <configuration-dependencies>
-                <config-type>node.properties.adhoc</config-type>
-                <config-type>config.properties.adhoc</config-type>
-                <config-type>jvm.config.adhoc</config-type>
-                <config-type>connectors.properties.adhoc</config-type>
+                <config-type>node.properties.etl</config-type>
+                <config-type>config.properties.etl</config-type>
+                <config-type>jvm.config.etl</config-type>
+                <config-type>connectors.properties.etl</config-type>
             </configuration-dependencies>
 
             <themes>
