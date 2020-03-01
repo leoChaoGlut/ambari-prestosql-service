@@ -81,7 +81,7 @@
     </property>
 
     <property require-input="true">
-        <name>discovery.uri</name>
+        <name>spiller-spill-path</name>
         <value>/data/presto/spill</value>
         <description>
         </description>
