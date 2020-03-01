@@ -27,7 +27,8 @@ PRESTO_TAR_NAME = PRESTO_TAR_URL.split('/')[-1]
 PRESTO_CLI_URL = config.get('download', 'presto_cli_url')
 
 packageDir = os.path.dirname(script_dir)
-serviceName = os.path.dirname(packageDir)
+serviceDir = os.path.dirname(packageDir)
+serviceName = os.path.basename(serviceDir)
 prestoHome = '/usr/hdp/current/' + serviceName
 etcDir = prestoHome + '/etc'
 catalogDir = etcDir + '/catalog'
