@@ -17,7 +17,7 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
 
-    <property require-input="true">
+    <property>
         <name>http-server.http.port</name>
         <value>10100</value>
         <description>
@@ -26,7 +26,7 @@
         </description>
     </property>
 
-    <property require-input="true">
+    <property>
         <name>query.max-memory</name>
         <value>30GB</value>
         <description>
