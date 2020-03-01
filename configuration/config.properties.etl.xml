@@ -48,7 +48,7 @@
 
     <property>
         <name>spill-enabled</name>
-        <value>false</value>
+        <value>true</value>
         <description>
 
         </description>
