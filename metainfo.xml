@@ -18,8 +18,8 @@
     <schemaVersion>2.0</schemaVersion>
     <services>
         <service>
-            <name>PRESTO</name>
-            <displayName>Presto</displayName>
+            <name>PRESTO_ETL</name>
+            <displayName>Presto_ETL</displayName>
             <comment>Presto is an open source distributed SQL query engine for running
                 interactive analytic queries against data sources of all sizes ranging
                 from gigabytes to petabytes.
