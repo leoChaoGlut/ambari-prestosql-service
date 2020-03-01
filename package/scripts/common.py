@@ -12,34 +12,63 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import ConfigParser
 import ast
 import os
+
+import ConfigParser
+import xmltodict
 from resource_management.core.resources.system import Execute
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 config = ConfigParser.ConfigParser()
 config.readfp(open(os.path.join(script_dir, 'download.ini')))
 
-PRESTO_RPM_URL = config.get('download', 'presto_rpm_url')
-PRESTO_RPM_NAME = PRESTO_RPM_URL.split('/')[-1]
+PRESTO_TAR_URL = config.get('download', 'presto_tar_url')
+PRESTO_TAR_NAME = PRESTO_TAR_URL.split('/')[-1]
 PRESTO_CLI_URL = config.get('download', 'presto_cli_url')
 
-def create_connectors(node_properties, connectors_to_add):
+with open('../../metainfo.xml', 'r') as f:
+    metaInfoXmlContent = f.read()
+
+serviceName = xmltodict.parse(metaInfoXmlContent)['metainfo']['services']['service']['name']
+prestoHome = '/usr/hdp/current/' + serviceName
+etcDir = prestoHome + '/etc'
+catalogDir = etcDir + '/catalog'
+launcherPath = prestoHome + '/bin/launcher'
+
+# also create prestoHome and etcDir
+Execute('mkdir -p {0}'.format(catalogDir))
+
+
+def create_connectors(connectors_to_add):
     if not connectors_to_add:
         return
-    Execute('mkdir -p {0}'.format(node_properties['catalog.config-dir']))
     connectors_dict = ast.literal_eval(connectors_to_add)
     for connector in connectors_dict:
-        connector_file = os.path.join(node_properties['catalog.config-dir'], connector + '.properties')
+        connector_file = os.path.join(catalogDir, connector + '.properties')
         with open(connector_file, 'w') as f:
             for lineitem in connectors_dict[connector]:
                 f.write('{0}\n'.format(lineitem))
 
-def delete_connectors(node_properties, connectors_to_delete):
+
+def delete_connectors(connectors_to_delete):
     if not connectors_to_delete:
         return
     connectors_list = ast.literal_eval(connectors_to_delete)
     for connector in connectors_list:
-        connector_file_name = os.path.join(node_properties['catalog.config-dir'], connector + '.properties')
+        connector_file_name = os.path.join(catalogDir, connector + '.properties')
         Execute('rm -f {0}'.format(connector_file_name))
+
+
+def start():
+    Execute('{0} start'.format(launcherPath))
+
+
+def stop():
+    Execute('{0} stop'.format(launcherPath))
+
+
+def install():
+    tmpPrestoTarballPath = '/tmp/' + PRESTO_TAR_NAME
+    Execute('wget --no-check-certificate {0} -O {1}'.format(PRESTO_TAR_URL, tmpPrestoTarballPath))
+    Execute('tar -xf {0} -C {1}'.format(tmpPrestoTarballPath, prestoHome))

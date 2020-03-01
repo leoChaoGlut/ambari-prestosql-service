@@ -25,11 +25,6 @@ config_properties = config['configurations']['config.properties']
 connectors_to_add = config['configurations']['connectors.properties']['connectors.to.add']
 connectors_to_delete = config['configurations']['connectors.properties']['connectors.to.delete']
 
-daemon_control_script = '/etc/init.d/presto'
-config_directory = '/etc/presto'
-
-memory_configs = ['query.max-memory-per-node', 'query.max-memory']
-
 host_info = config['clusterHostInfo']
 
 host_level_params = config['hostLevelParams']
