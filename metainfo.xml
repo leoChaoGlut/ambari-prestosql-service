@@ -18,8 +18,8 @@
     <schemaVersion>2.0</schemaVersion>
     <services>
         <service>
-            <name>PRESTO_ETL</name>
-            <displayName>Presto_ETL</displayName>
+            <name>PRESTO_ADHOC</name>
+            <displayName>Presto_Adhoc</displayName>
             <comment>Presto is an open source distributed SQL query engine for running
                 interactive analytic queries against data sources of all sizes ranging
                 from gigabytes to petabytes.
@@ -27,8 +27,8 @@
             <version>330</version>
             <components>
                 <component>
-                    <name>PRESTO_COORDINATOR_ETL</name>
-                    <displayName>Presto coordinator ETL</displayName>
+                    <name>PRESTO_COORDINATOR_ADHOC</name>
+                    <displayName>Presto coordinator AdHoc</displayName>
                     <category>MASTER</category>
                     <cardinality>1</cardinality>
                     <versionAdvertised>true</versionAdvertised>
@@ -40,8 +40,8 @@
                 </component>
 
                 <component>
-                    <name>PRESTO_WORKER_ETL</name>
-                    <displayName>Presto worker ETL</displayName>
+                    <name>PRESTO_WORKER_ADHOC</name>
+                    <displayName>Presto worker Adhoc</displayName>
                     <category>SLAVE</category>
                     <cardinality>0+</cardinality>
                     <versionAdvertised>true</versionAdvertised>
