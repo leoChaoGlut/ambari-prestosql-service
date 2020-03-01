@@ -25,6 +25,12 @@
                 from gigabytes to petabytes.
             </comment>
             <version>330</version>
+            <quickLinksConfigurations>
+                <quickLinksConfiguration>
+                    <fileName>quicklinks.json</fileName>
+                    <default>true</default>
+                </quickLinksConfiguration>
+            </quickLinksConfigurations>
             <components>
                 <component>
                     <name>PRESTO_COORDINATOR_ADHOC</name>
