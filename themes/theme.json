@@ -95,7 +95,7 @@
           "subsection-name": "subsection-node-config"
         },
         {
-          "config": "node.properties/plugin.config-dir",
+          "config": "node.properties/catalog.config-dir",
           "subsection-name": "subsection-node-config"
         },
         {
@@ -144,7 +144,7 @@
         }
       },
       {
-        "config": "node.properties/plugin.config-dir",
+        "config": "node.properties/catalog.config-dir",
         "widget": {
           "type": "directory"
         }

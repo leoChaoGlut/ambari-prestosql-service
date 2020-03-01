@@ -87,4 +87,11 @@
         </description>
     </property>
 
+    <property require-input="true">
+        <name>catalog.config-dir</name>
+        <value>/data/presto/catalog</value>
+        <description>
+        </description>
+    </property>
+
 </configuration>

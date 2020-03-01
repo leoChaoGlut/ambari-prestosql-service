@@ -11,17 +11,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from unittest import TestCase
-from mock import patch, call
-import sys
 import os
+import sys
+from mock import patch, call
+from unittest import TestCase
+
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 from test_worker import mock_file_descriptor_write_method
 
 
 class TestCommonCode(TestCase):
-    node_properties = {'plugin.config-dir': '/does/not/exist'}
+    node_properties = {'catalog.config-dir': '/does/not/exist'}
 
     @patch('package.scripts.common.Execute')
     def test_no_connectors_to_add(self, unused_execute_mock):
