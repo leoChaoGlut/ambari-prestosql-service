@@ -52,7 +52,7 @@
                 </component>
 
                 <component>
-                    <name>PRESTO_CLI</name>
+                    <name>PRESTO_CLI_ADHOC</name>
                     <displayName>Presto command line interface</displayName>
                     <category>CLIENT</category>
                     <cardinality>1+</cardinality>
@@ -65,10 +65,10 @@
             </components>
 
             <configuration-dependencies>
-                <config-type>node.properties</config-type>
-                <config-type>config.properties</config-type>
-                <config-type>jvm.config</config-type>
-                <config-type>connectors.properties</config-type>
+                <config-type>node.properties.adhoc</config-type>
+                <config-type>config.properties.adhoc</config-type>
+                <config-type>jvm.config.adhoc</config-type>
+                <config-type>connectors.properties.adhoc</config-type>
             </configuration-dependencies>
 
             <themes>

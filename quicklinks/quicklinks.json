@@ -1,5 +1,5 @@
 {
-  "name": "default",
+  "name": "Coordinator UI",
   "description": "default quick links configuration",
   "configuration": {
     "protocol": {
@@ -11,7 +11,7 @@
         "label": "Coordinator UI",
         "component_name": "PRESTO_ETL",
         "requires_user_name": "false",
-        "url": "%@://%@:%@",
+        "url": "%@://hdp04:%@",
         "port": {
           "http_property": "http-server.http.port",
           "regex": "^(\\d+)$",
