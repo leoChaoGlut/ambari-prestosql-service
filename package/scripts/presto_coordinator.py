@@ -15,8 +15,8 @@
 import os.path as path
 import uuid
 
-from common import create_connectors, delete_connectors, launcherPath, \
-    start, stop, etcDir, install
+from common import create_connectors, delete_connectors, launcherPath, etcDir, catalogDir, PRESTO_TAR_NAME, \
+    PRESTO_TAR_URL, prestoHome
 from presto_client import smoketest_presto, PrestoClient
 from resource_management.core.exceptions import ExecutionFailed, ComponentIsNotRunning
 from resource_management.core.resources.system import Execute
@@ -25,16 +25,21 @@ from resource_management.libraries.script.script import Script
 
 class Coordinator(Script):
     def install(self, env):
-        install()
+        Execute('mkdir -p {0}'.format(catalogDir))
+        tmpPrestoTarballPath = '/tmp/' + PRESTO_TAR_NAME
+        Execute('wget --no-check-certificate {0} -O {1}'.format(PRESTO_TAR_URL, tmpPrestoTarballPath))
+        Execute('tar -xf {0} -C {1}'.format(tmpPrestoTarballPath, prestoHome))
+
         self.configure(env)
 
     def stop(self, env):
-        stop()
+        Execute('{0} stop'.format(launcherPath))
 
     def start(self, env):
+        self.configure(self)
+        Execute('{0} start'.format(launcherPath))
+
         from params import config_properties, host_info
-        self.configure(env)
-        start()
 
         if 'presto_worker_hosts' in host_info.keys():
             all_hosts = host_info['presto_worker_hosts'] + \

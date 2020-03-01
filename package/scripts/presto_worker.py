@@ -15,8 +15,8 @@
 import os.path as path
 import uuid
 
-from common import create_connectors, delete_connectors, launcherPath, \
-    etcDir, catalogDir, PRESTO_TAR_NAME, prestoHome, PRESTO_TAR_URL
+from common import create_connectors, delete_connectors, launcherPath, etcDir, catalogDir, PRESTO_TAR_NAME, \
+    PRESTO_TAR_URL, prestoHome
 from resource_management.core.exceptions import ExecutionFailed, ComponentIsNotRunning
 from resource_management.core.resources.system import Execute
 from resource_management.libraries.script.script import Script
