@@ -17,7 +17,7 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
 
-    <property>
+    <property require-input="true">
         <name>http-server.http.port</name>
         <value>10100</value>
         <description>
@@ -26,7 +26,7 @@
         </description>
     </property>
 
-    <property>
+    <property require-input="true">
         <name>query.max-memory</name>
         <value>30GB</value>
         <description>
@@ -36,13 +36,6 @@
             click on the pencil that appears when you hover over the setting and
             ignore that higher values are not recommended.
         </description>
-        <value-attributes>
-            <type>int</type>
-            <minimum>0</minimum>
-            <maximum>300</maximum>
-            <increment-step>2</increment-step>
-            <unit>GB</unit>
-        </value-attributes>
     </property>
 
     <property require-input="true">
