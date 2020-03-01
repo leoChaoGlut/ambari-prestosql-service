@@ -12,15 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import uuid
 import os.path as path
-
-from resource_management.libraries.script.script import Script
-from resource_management.core.resources.system import Execute
-from resource_management.core.exceptions import ExecutionFailed, ComponentIsNotRunning
+import uuid
 from common import PRESTO_RPM_URL, PRESTO_RPM_NAME, create_connectors, \
     delete_connectors
 from presto_client import smoketest_presto, PrestoClient
+from resource_management.core.exceptions import ExecutionFailed, ComponentIsNotRunning
+from resource_management.core.resources.system import Execute
+from resource_management.libraries.script.script import Script
 
 
 class Coordinator(Script):
@@ -58,14 +57,13 @@ class Coordinator(Script):
 
     def configure(self, env):
         from params import node_properties, jvm_config, config_properties, \
-            config_directory, memory_configs, host_info, connectors_to_add, connectors_to_delete
+            config_directory, memory_configs, connectors_to_add, connectors_to_delete
         key_val_template = '{0}={1}\n'
 
         with open(path.join(config_directory, 'node.properties'), 'w') as f:
             for key, value in node_properties.iteritems():
                 f.write(key_val_template.format(key, value))
             f.write(key_val_template.format('node.id', str(uuid.uuid4())))
-            f.write(key_val_template.format('node.data-dir', '/var/lib/presto'))
 
         with open(path.join(config_directory, 'jvm.config'), 'w') as f:
             f.write(jvm_config['jvm.config'])
@@ -79,6 +77,7 @@ class Coordinator(Script):
                 f.write(key_val_template.format(key, value))
             f.write(key_val_template.format('coordinator', 'true'))
             f.write(key_val_template.format('discovery-server.enabled', 'true'))
+            f.write(key_val_template.format('node-scheduler.include-coordinator', 'false'))
 
         create_connectors(node_properties, connectors_to_add)
         delete_connectors(node_properties, connectors_to_delete)

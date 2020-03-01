@@ -12,14 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import uuid
 import os.path as path
-
-from resource_management.libraries.script.script import Script
-from resource_management.core.resources.system import Execute
-from resource_management.core.exceptions import ExecutionFailed, ComponentIsNotRunning
+import uuid
 from common import PRESTO_RPM_URL, PRESTO_RPM_NAME, create_connectors, \
     delete_connectors
+from resource_management.core.exceptions import ExecutionFailed, ComponentIsNotRunning
+from resource_management.core.resources.system import Execute
+from resource_management.libraries.script.script import Script
 
 
 class Worker(Script):
@@ -58,7 +57,6 @@ class Worker(Script):
             for key, value in node_properties.iteritems():
                 f.write(key_val_template.format(key, value))
             f.write(key_val_template.format('node.id', str(uuid.uuid4())))
-            f.write(key_val_template.format('node.data-dir', '/var/lib/presto'))
 
         with open(path.join(config_directory, 'jvm.config'), 'w') as f:
             f.write(jvm_config['jvm.config'])
