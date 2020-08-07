@@ -48,6 +48,7 @@ class Coordinator(Script):
 
         from params import config_properties, host_info
 
+        # 如果同一个集群里有多个presto集群,这个值也要跟着改如presto_coordinator_${env}_hosts
         coordinator_hosts = 'presto_coordinator_adhoc_hosts'
         worker_hosts = 'presto_worker_adhoc_hosts'
 
