@@ -16,7 +16,7 @@ import os.path as path
 import uuid
 
 from common import create_connectors, delete_connectors, launcherPath, etcDir, catalogDir, PRESTO_TAR_NAME, \
-    PRESTO_TAR_URL, prestoHome, jdk11Url, jdk11Home, jdk11TarName
+    PRESTO_TAR_URL, prestoHome, jdk11Url, jdk11Home, jdk11TarName, exportJavaHomeAndPath
 from resource_management.core.exceptions import ExecutionFailed, ComponentIsNotRunning
 from resource_management.core.resources.system import Execute
 from resource_management.libraries.script.script import Script
@@ -39,24 +39,15 @@ class Worker(Script):
         self.configure(env)
 
     def stop(self, env):
-        Execute('export JAVA_HOME={0}'.format(jdk11Home))
-        Execute('export PATH=${JAVA_HOME}/bin:$PATH')
-
-        Execute('{0} stop'.format(launcherPath))
+        Execute(exportJavaHomeAndPath + '{0} stop'.format(launcherPath))
 
     def start(self, env):
-        Execute('export JAVA_HOME={0}'.format(jdk11Home))
-        Execute('export PATH=${JAVA_HOME}/bin:$PATH')
-
         self.configure(self)
-        Execute('{0} start'.format(launcherPath))
+        Execute(exportJavaHomeAndPath + '{0} start'.format(launcherPath))
 
     def status(self, env):
         try:
-            Execute('export JAVA_HOME={0}'.format(jdk11Home))
-            Execute('export PATH=${JAVA_HOME}/bin:$PATH')
-
-            Execute('{0} status'.format(launcherPath))
+            Execute(exportJavaHomeAndPath + '{0} status'.format(launcherPath))
         except ExecutionFailed as ef:
             if ef.code == 3:
                 raise ComponentIsNotRunning("ComponentIsNotRunning")

@@ -37,6 +37,8 @@ etcDir = prestoHome + '/etc'
 catalogDir = etcDir + '/catalog'
 launcherPath = prestoHome + '/bin/launcher'
 
+exportJavaHomeAndPath = ' export JAVA_HOME=' + jdk11Home + ' && export PATH=${JAVA_HOME}/bin:$PATH '
+
 
 def create_connectors(connectors_to_add):
     if not connectors_to_add:
