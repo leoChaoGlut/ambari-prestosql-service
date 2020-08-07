@@ -26,16 +26,16 @@ from resource_management.libraries.script.script import Script
 
 class Coordinator(Script):
     def install(self, env):
+        # download jdk11 and extract jdk11 tarball
+        tmpJdk11Path = '/tmp/' + jdk11TarName
+        Execute('wget --no-check-certificate {0} -O {1}'.format(jdk11Url, tmpJdk11Path))
+        Execute('tar -xf {0} -C {1} --strip-components=1'.format(tmpJdk11Path, jdk11Home))
+
         # download and extract presto tarball
         Execute('mkdir -p {0}'.format(catalogDir))
         tmpPrestoTarballPath = '/tmp/' + PRESTO_TAR_NAME
         Execute('wget --no-check-certificate {0} -O {1}'.format(PRESTO_TAR_URL, tmpPrestoTarballPath))
         Execute('tar -xf {0} -C {1} --strip-components=1'.format(tmpPrestoTarballPath, prestoHome))
-
-        # download jdk11 and extract jdk11 tarball
-        tmpJdk11Path = '/tmp/' + jdk11TarName
-        Execute('wget --no-check-certificate {0} -O {1}'.format(jdk11Url, tmpJdk11Path))
-        Execute('tar -xf {0} -C {1} --strip-components=1'.format(tmpJdk11Path, jdk11Home))
 
         self.configure(env)
 
