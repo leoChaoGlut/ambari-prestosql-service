@@ -25,11 +25,14 @@ config.readfp(open(os.path.join(script_dir, 'download.ini')))
 PRESTO_TAR_URL = config.get('download', 'presto_tar_url')
 PRESTO_TAR_NAME = PRESTO_TAR_URL.split('/')[-1]
 PRESTO_CLI_URL = config.get('download', 'presto_cli_url')
+jdk11Url = config.get('download', 'jdk11_url')
+jdk11TarName = jdk11Url.split('/')[-1]
 
 packageDir = os.path.dirname(script_dir)
 serviceDir = os.path.dirname(packageDir)
 serviceName = os.path.basename(serviceDir)
 prestoHome = '/data/presto/' + serviceName
+jdk11Home = '/data/jdk11/'
 etcDir = prestoHome + '/etc'
 catalogDir = etcDir + '/catalog'
 launcherPath = prestoHome + '/bin/launcher'
