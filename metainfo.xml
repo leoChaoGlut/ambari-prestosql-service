@@ -16,11 +16,10 @@
 -->
 <metainfo>
     <schemaVersion>2.0</schemaVersion>
-    <env>ETL</env>
     <services>
         <service>
-            <name>PRESTO_${metainfo.env}</name>
-            <displayName>Presto_${metainfo.env}</displayName>
+            <name>PRESTO_ENV</name>
+            <displayName>Presto_ENV</displayName>
             <comment>Presto is an open source distributed SQL query engine for running
                 interactive analytic queries against data sources of all sizes ranging
                 from gigabytes to petabytes.
@@ -28,8 +27,8 @@
             <version>339</version>
             <components>
                 <component>
-                    <name>PRESTO_COORDINATOR_${metainfo.env}</name>
-                    <displayName>Presto coordinator ${metainfo.env}</displayName>
+                    <name>PRESTO_COORDINATOR_ENV</name>
+                    <displayName>Presto coordinator ENV</displayName>
                     <category>MASTER</category>
                     <cardinality>1</cardinality>
                     <versionAdvertised>true</versionAdvertised>
@@ -41,8 +40,8 @@
                 </component>
 
                 <component>
-                    <name>PRESTO_WORKER_${metainfo.env}</name>
-                    <displayName>Presto worker ${metainfo.env}</displayName>
+                    <name>PRESTO_WORKER_ENV</name>
+                    <displayName>Presto worker ENV</displayName>
                     <category>SLAVE</category>
                     <cardinality>0+</cardinality>
                     <versionAdvertised>true</versionAdvertised>
@@ -53,8 +52,8 @@
                 </component>
 
                 <component>
-                    <name>PRESTO_CLI_${metainfo.env}</name>
-                    <displayName>Presto command line interface ${metainfo.env}</displayName>
+                    <name>PRESTO_CLI_ENV</name>
+                    <displayName>Presto command line interface ENV</displayName>
                     <category>CLIENT</category>
                     <cardinality>1+</cardinality>
                     <versionAdvertised>true</versionAdvertised>
