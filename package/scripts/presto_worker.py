@@ -39,15 +39,15 @@ class Worker(Script):
         self.configure(env)
 
     def stop(self, env):
-        Execute(exportJavaHomeAndPath + '{0} stop'.format(launcherPath))
+        Execute(exportJavaHomeAndPath + ' && {0} stop'.format(launcherPath))
 
     def start(self, env):
         self.configure(self)
-        Execute(exportJavaHomeAndPath + '{0} start'.format(launcherPath))
+        Execute(exportJavaHomeAndPath + ' && {0} start'.format(launcherPath))
 
     def status(self, env):
         try:
-            Execute(exportJavaHomeAndPath + '{0} status'.format(launcherPath))
+            Execute(exportJavaHomeAndPath + ' && {0} status'.format(launcherPath))
         except ExecutionFailed as ef:
             if ef.code == 3:
                 raise ComponentIsNotRunning("ComponentIsNotRunning")

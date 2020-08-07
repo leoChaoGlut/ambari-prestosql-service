@@ -44,7 +44,7 @@ class Coordinator(Script):
 
     def start(self, env):
         self.configure(self)
-        Execute(exportJavaHomeAndPath + '{0} start'.format(launcherPath))
+        Execute(exportJavaHomeAndPath + ' && {0} start'.format(launcherPath))
 
         from params import config_properties, host_info
 
@@ -62,7 +62,7 @@ class Coordinator(Script):
 
     def status(self, env):
         try:
-            Execute(exportJavaHomeAndPath + '{0} status'.format(launcherPath))
+            Execute(exportJavaHomeAndPath + ' && {0} status'.format(launcherPath))
         except ExecutionFailed as ef:
             if ef.code == 3:
                 raise ComponentIsNotRunning("ComponentIsNotRunning")
