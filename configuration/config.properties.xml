@@ -28,7 +28,7 @@
 
     <property>
         <name>query.max-memory</name>
-        <value>30GB</value>
+        <value>20GB</value>
         <description>
             The maximum amount of distributed memory that a query may use.
 

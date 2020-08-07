@@ -20,20 +20,19 @@
         <name>jvm.config</name>
         <value>
             -server
-            -Xmx10G
+            -Xmx11G
             -XX:-UseBiasedLocking
             -XX:+UseG1GC
             -XX:G1HeapRegionSize=32M
             -XX:+ExplicitGCInvokesConcurrent
             -XX:+ExitOnOutOfMemoryError
-            -XX:+UseGCOverheadLimit
             -XX:+HeapDumpOnOutOfMemoryError
             -XX:ReservedCodeCacheSize=512M
             -Djdk.attach.allowAttachSelf=true
             -Djdk.nio.maxCachedBufferSize=2000000
-            -Dpresto-temporarily-allow-java8=true
         </value>
         <description>
+            若期望完全占满一台物理机内存: Xmx=物理机内存/13*10,
             A list of command line options used for launching the Java Virtual
             Machine. The format of the file must be one option per line. These
             options are not interpreted by the shell, so options containing spaces or
