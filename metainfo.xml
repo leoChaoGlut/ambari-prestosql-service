@@ -41,7 +41,7 @@
                     <commandScript>
                         <script>scripts/presto_coordinator.py</script>
                         <scriptType>PYTHON</scriptType>
-                        <timeout>1200</timeout>
+                        <timeout>60</timeout>
                     </commandScript>
                 </component>
 
@@ -72,9 +72,9 @@
 
             <configuration-dependencies>
                 <config-type>node.properties.adhoc</config-type>
-                <config-type>config.properties.adhoc</config-type>
-                <config-type>jvm.config.adhoc</config-type>
                 <config-type>connectors.properties.adhoc</config-type>
+                <config-type>jvm.config.adhoc</config-type>
+                <config-type>config.properties.adhoc</config-type>
             </configuration-dependencies>
 
             <themes>
