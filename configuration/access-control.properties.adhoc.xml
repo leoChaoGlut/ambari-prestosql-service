@@ -20,23 +20,23 @@
  */
 -->
 <configuration>
-    <property>
-        <name>node.environment</name>
-        <value>etl</value>
-        <description>
-            The name of the environment. All Presto nodes in a cluster must have the
-            same environment name.
-        </description>
-    </property>
 
     <property>
-        <name>node.data-dir</name>
-        <value>/data/presto/data</value>
+        <name>access-control.name</name>
+        <value>file</value>
+    </property>
+    <property>
+        <name>security.config-file</name>
+        <value>etc/rules.json</value>
         <description>
-            The location (filesystem path) of the data directory. Presto will store
-            logs and other data here.
+            This plugin allows you to specify access control rules in a file. To use this plugin, add an
+            etc/access-control.properties file containing two required properties: access-control.name, which must be
+            equal to file, and security.config-file, which must be equal to the location of the config file. For
+            example, if a config file named rules.json resides in etc, add an etc/access-control.properties with the
+            following contents:
+            access-control.name=file
+            security.config-file=etc/rules.json
         </description>
     </property>
-
 
 </configuration>

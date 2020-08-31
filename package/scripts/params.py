@@ -21,6 +21,8 @@ config = Script.get_config()
 node_properties = config['configurations']['node.properties.etl']
 jvm_config = config['configurations']['jvm.config.etl']
 config_properties = config['configurations']['config.properties.etl']
+access_control_properties = config['configurations']['access-control.properties.etl']
+rules_json = config['configurations']['rules.json.etl']
 
 connectors_to_add = config['configurations']['connectors.properties.etl']['connectors.to.add']
 connectors_to_delete = config['configurations']['connectors.properties.etl']['connectors.to.delete']

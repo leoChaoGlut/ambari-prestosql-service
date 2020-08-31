@@ -38,10 +38,11 @@
                     <category>MASTER</category>
                     <cardinality>1</cardinality>
                     <versionAdvertised>true</versionAdvertised>
+                    <recovery_enabled>true</recovery_enabled>
                     <commandScript>
                         <script>scripts/presto_coordinator.py</script>
                         <scriptType>PYTHON</scriptType>
-                        <timeout>1200</timeout>
+                        <timeout>60</timeout>
                     </commandScript>
                 </component>
 
@@ -51,6 +52,7 @@
                     <category>SLAVE</category>
                     <cardinality>0+</cardinality>
                     <versionAdvertised>true</versionAdvertised>
+                    <recovery_enabled>true</recovery_enabled>
                     <commandScript>
                         <script>scripts/presto_worker.py</script>
                         <scriptType>PYTHON</scriptType>
@@ -71,18 +73,13 @@
             </components>
 
             <configuration-dependencies>
+                <config-type>access-control.properties.adhoc</config-type>
                 <config-type>node.properties.etl</config-type>
-                <config-type>config.properties.etl</config-type>
-                <config-type>jvm.config.etl</config-type>
                 <config-type>connectors.properties.etl</config-type>
+                <config-type>jvm.config.etl</config-type>
+                <config-type>config.properties.etl</config-type>
             </configuration-dependencies>
 
-            <themes>
-                <theme>
-                    <fileName>theme.json</fileName>
-                    <default>true</default>
-                </theme>
-            </themes>
 
         </service>
     </services>

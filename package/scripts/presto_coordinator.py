@@ -70,7 +70,9 @@ class Coordinator(Script):
                 raise ef
 
     def configure(self, env):
-        from params import node_properties, jvm_config, config_properties, connectors_to_add, connectors_to_delete
+        from params import node_properties, jvm_config, config_properties, connectors_to_add, connectors_to_delete, \
+            access_control_properties, rules_json
+
         key_val_template = '{0}={1}\n'
 
         with open(path.join(etcDir, 'node.properties'), 'w') as f:
@@ -79,7 +81,15 @@ class Coordinator(Script):
             f.write(key_val_template.format('node.id', str(uuid.uuid4())))
 
         with open(path.join(etcDir, 'jvm.config'), 'w') as f:
-            f.write(jvm_config['jvm.config'])
+            f.write(jvm_config['content'])
+
+        with open(path.join(etcDir, 'access-control.properties'), 'w') as f:
+            for key, value in access_control_properties.iteritems():
+                f.write(key_val_template.format(key, value))
+
+        rulesJsonFilePath = access_control_properties['security.config-file']
+        with open(path.join(prestoHome, rulesJsonFilePath), 'w') as f:
+            f.write(rules_json['content'])
 
         with open(path.join(etcDir, 'config.properties'), 'w') as f:
             for key, value in config_properties.iteritems():

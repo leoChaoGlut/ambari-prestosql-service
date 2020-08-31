@@ -20,23 +20,28 @@
  */
 -->
 <configuration>
-    <property>
-        <name>node.environment</name>
-        <value>etl</value>
-        <description>
-            The name of the environment. All Presto nodes in a cluster must have the
-            same environment name.
-        </description>
-    </property>
 
     <property>
-        <name>node.data-dir</name>
-        <value>/data/presto/data</value>
-        <description>
-            The location (filesystem path) of the data directory. Presto will store
-            logs and other data here.
-        </description>
+        <name>content</name>
+        <value>
+            {
+            "catalogs": [
+            {
+            "catalog": ".*",
+            "user": "root",
+            "allow": true
+            },
+            {
+            "catalog": "system",
+            "allow": false
+            }
+            ]
+            }
+        </value>
+        <value-attributes>
+            <type>content</type>
+            <show-property-name>false</show-property-name>
+        </value-attributes>
+        <on-ambari-upgrade add="true"/>
     </property>
-
-
 </configuration>
