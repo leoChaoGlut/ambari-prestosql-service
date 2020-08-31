@@ -73,6 +73,7 @@
             </components>
 
             <configuration-dependencies>
+                <config-type>access-control.properties.adhoc</config-type>
                 <config-type>node.properties.adhoc</config-type>
                 <config-type>connectors.properties.adhoc</config-type>
                 <config-type>jvm.config.adhoc</config-type>

@@ -20,26 +20,23 @@
  */
 -->
 <configuration>
+
     <property>
-        <name>content</name>
-        <value>
-            -server
-            -Xmx10G
-            -XX:-UseBiasedLocking
-            -XX:+UseG1GC
-            -XX:G1HeapRegionSize=32M
-            -XX:+ExplicitGCInvokesConcurrent
-            -XX:+ExitOnOutOfMemoryError
-            -XX:+HeapDumpOnOutOfMemoryError
-            -XX:ReservedCodeCacheSize=512M
-            -Djdk.attach.allowAttachSelf=true
-            -Djdk.nio.maxCachedBufferSize=2000000
-            -DHADOOP_USER_NAME=hive
-        </value>
-        <value-attributes>
-            <type>content</type>
-            <show-property-name>false</show-property-name>
-        </value-attributes>
-        <on-ambari-upgrade add="true"/>
+        <name>access-control.name</name>
+        <value>file</value>
     </property>
+    <property>
+        <name>security.config-file</name>
+        <value>etc/rules.json</value>
+        <description>
+            This plugin allows you to specify access control rules in a file. To use this plugin, add an
+            etc/access-control.properties file containing two required properties: access-control.name, which must be
+            equal to file, and security.config-file, which must be equal to the location of the config file. For
+            example, if a config file named rules.json resides in etc, add an etc/access-control.properties with the
+            following contents:
+            access-control.name=file
+            security.config-file=etc/rules.json
+        </description>
+    </property>
+
 </configuration>

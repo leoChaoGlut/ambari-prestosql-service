@@ -64,7 +64,7 @@ class Worker(Script):
             f.write(key_val_template.format('node.id', str(uuid.uuid4())))
 
         with open(path.join(etcDir, 'jvm.config'), 'w') as f:
-            f.write(jvm_config['jvm.config'])
+            f.write(jvm_config['content'])
 
         with open(path.join(etcDir, 'config.properties'), 'w') as f:
             for key, value in config_properties.iteritems():

@@ -20,21 +20,23 @@
  */
 -->
 <configuration>
+
     <property>
         <name>content</name>
         <value>
-            -server
-            -Xmx10G
-            -XX:-UseBiasedLocking
-            -XX:+UseG1GC
-            -XX:G1HeapRegionSize=32M
-            -XX:+ExplicitGCInvokesConcurrent
-            -XX:+ExitOnOutOfMemoryError
-            -XX:+HeapDumpOnOutOfMemoryError
-            -XX:ReservedCodeCacheSize=512M
-            -Djdk.attach.allowAttachSelf=true
-            -Djdk.nio.maxCachedBufferSize=2000000
-            -DHADOOP_USER_NAME=hive
+            {
+            "catalogs": [
+            {
+            "catalog": ".*",
+            "user": "root",
+            "allow": true
+            },
+            {
+            "catalog": "system",
+            "allow": false
+            }
+            ]
+            }
         </value>
         <value-attributes>
             <type>content</type>

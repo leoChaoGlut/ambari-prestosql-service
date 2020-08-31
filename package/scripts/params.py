@@ -21,6 +21,8 @@ config = Script.get_config()
 node_properties = config['configurations']['node.properties.adhoc']
 jvm_config = config['configurations']['jvm.config.adhoc']
 config_properties = config['configurations']['config.properties.adhoc']
+access_control_properties = config['configurations']['access-control.properties.adhoc']
+rules_json = config['configurations']['rules.json.adhoc']
 
 connectors_to_add = config['configurations']['connectors.properties.adhoc']['connectors.to.add']
 connectors_to_delete = config['configurations']['connectors.properties.adhoc']['connectors.to.delete']
