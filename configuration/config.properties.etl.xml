@@ -79,4 +79,13 @@
         </description>
     </property>
 
+    <property>
+        <name>jmx.rmiregistry.port</name>
+        <value>9080</value>
+    </property>
+    <property>
+        <name>jmx.rmiserver.port</name>
+        <value>9081</value>
+    </property>
+
 </configuration>
